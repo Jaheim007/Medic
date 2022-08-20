@@ -1,8 +1,8 @@
-from Front.views import home , inner 
+from Front.views import home , about 
 from django.urls import path
 
 urlpatterns = [
     path('' , home , name='home') , 
-    path('inner/' , inner , name='inner'), 
+    path('about', about , name='about')
 ]
  
