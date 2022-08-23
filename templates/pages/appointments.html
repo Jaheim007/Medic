@@ -2,46 +2,57 @@
 
 {% load static %}
 
-{% block "content" %}
+{% block 'content' %}
+<br><br><br><br><br>
 
-<form>
-    <div class="form-row">
-        <div class="row">
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Your name">
-            </div>
+<section id="appointment" class="appointment section-bg">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>Make an Appointment</h2>
+      <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+    </div>
+
+    <form>
+
+      <div class="form-row">
+
+        <div class="form-group col-md-8 ml-10 mt-4 ">
+          <input type="text" class="form-control" placeholder="Your name">
         </div>
-      <div class="form-group col-md-6">
-        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-      </div>
-    </div>
-    <div class="form-group">
-      <input type="text" class="form-control" id="inputAddress" placeholder="Phone Number">
-    </div>
-    <div class="form-group">
-      <label for="inputAddress2">Appointment </label>
-      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-4">
-        <label for="inputState">Doctors</label>
-        <select id="inputState" class="form-control">
-          <option selected>Choose...</option>
-          <option>...</option>
-        </select>
-      </div>
-      <div class="form-group col-md-4">
-        <label for="inputState">Departments</label>
-        <select id="inputState" class="form-control">
-          <option selected>Choose...</option>
-          <option>...</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-group">
-        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Message (Optional)" rows="3"></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Make An Appointment</button>
-  </form>
 
-{% endblock "content" %}
+
+        <div class="form-group col-md-8 mt-4">
+          <input type="email" class="form-control" id="inputEmail4" placeholder="Your Email">
+        </div>
+
+
+        <div class="form-group col-md-8 mt-4">
+          <select id="inputState" class="form-control">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
+        </div>
+
+        <div class="form-group col-md-8 mt-4">
+          <select id="inputState" class="form-control">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
+        </div>
+
+        <div class="form-group col-md-8 mt-4">
+          <input type="text" class="form-control" id="pick-date" placeholder="Pick A Date">
+        </div>
+
+        <div class="col-md-8">
+          <button type="submit" class=" mt-4 mr-5 btn btn-success" style= "background: #65c9cd; border: none; ">Make An Appointment</button>
+        </div>
+        
+    </form>
+  
+</div>
+</div>
+</section>
+
+{% endblock 'content' %}
