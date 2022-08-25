@@ -1,4 +1,8 @@
 from Front.views import home , about , services , departments , doctor , contact, appointment
+
+
+
+
 from django.urls import path
 
 urlpatterns = [
@@ -8,6 +12,6 @@ urlpatterns = [
     path('contact', contact , name='contact'),
     path('department', departments , name='department'),
     path('doctor', doctor , name='doctor'),
-    path('appointment' , appointment, name= "appointment") 
+    path('appointment' , appointment, name= "appointment"),
 ]
  

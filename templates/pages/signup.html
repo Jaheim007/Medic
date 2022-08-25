@@ -1,0 +1,40 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% load widget_tweaks %}
+
+{% block 'content' %}
+
+<br><br><br><br><br><br><br>
+<div class="container mt-4" >
+    <div class="row justify-content-center">
+    <div class="col-8">
+        <h2 class="mt-2">Sign Up</h2>
+        <hr class="mt-4 mb-4">
+            <form method="POST">
+
+                {% csrf_token %}
+
+                {% render_field form.first_name class="mt-4 form-control" placeholder=form.first_name.label %}
+
+                {% render_field form.last_name class="mt-4 form-control" placeholder=form.last_name.label %}
+
+                {% render_field form.username class="mt-4 form-control" placeholder=form.username.label %}
+                
+                {% render_field form.email class="mt-4 form-control" placeholder=form.email.label %}
+             
+                {% render_field form.password1 class="mt-4 form-control" placeholder=form.password1.label %}
+
+                {% render_field form.password2 class="mt-4 form-control" placeholder=form.password2.label %}
+
+                <button type="submit" class="mt-4 btn btn-success">Sign Up</button>
+                
+                <br><br><br><br><br>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock 'content' %}

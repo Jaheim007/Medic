@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Front',
     'phonenumber_field',
     'authentication',
+    'widget_tweaks'
     
 ]
 
