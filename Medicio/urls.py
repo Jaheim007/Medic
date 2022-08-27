@@ -17,10 +17,15 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 from django.urls import path , include
+from authentication import views
+from Front import views as front
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("" , include("Front.urls"))
+    path("" , include("Front.urls")), 
+    path("signup" ,views.Signup.as_view() , name='signup'),
+    path("login" , views.Login.as_view() , name='login'),
+    path("user" , front.User_profile.as_view(), name="user")
 ]
 
 if settings.DEBUG:   
