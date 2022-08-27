@@ -17,6 +17,7 @@ class User(AbstractUser , RepeatFields):
     phone = PhoneNumberField(region="CI")
     date_of_birth = models.DateField(blank=True , null=True)
     gender = models.CharField(max_length=150 , choices=Gender)
-    photo = models.ImageField(upload_to="User__Images")
+    image = models.URLField()
+    occupation = models.CharField(max_length=150)
     
 

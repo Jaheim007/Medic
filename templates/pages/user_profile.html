@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="{{user.photo}}" alt=""/>
+                            <img src="{{user.image}}" alt=""/>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -27,7 +27,7 @@
                                         {{user.first_name}} {{user.last_name}}
                                     </h5>
                                     <h6>
-                                        Web Developer and Designer
+                                        {{user.occupation}}
                                     </h6>
                                  <br><br>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -75,7 +75,7 @@
                                                 <label>Profession</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Web Developer and Designer</p>
+                                                <p>{{user.occupation}}</p>
                                             </div>
                                     </div>
                             </div>

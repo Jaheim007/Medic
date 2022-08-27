@@ -1,13 +1,19 @@
 from django.contrib import admin
-from .models import About_Us , About_Stats , About_provide , Appointment , Banner , Contact , Emergency_banner , Departments , Doctors , Services , Services_banner , SiteInfo , Testimonials , Newsletter
+from .models import About_Us , About_Stats ,  Appointment , Banner , Contact , Emergency_banner , Departments , Doctors , Services ,  SiteInfo , Testimonials , Newsletter
 
 @admin.register(About_Us)
 
 class About_Us(admin.ModelAdmin):
     list_display = (
         "title",
+        "sub_title",
         "description",
         "deleted",
+        "description_2",
+        "list_item_1",
+        "list_item_2",
+        "list_item_3",
+        "image"
 
     )
 
@@ -15,19 +21,12 @@ class About_Us(admin.ModelAdmin):
 
 class About_Stats(admin.ModelAdmin):
     list_display = (
-        "title",
         "number_stats",
-        "icon"
-    )
-
-@admin.register(About_provide)
-
-class About_provide(admin.ModelAdmin):
-    list_display = (
-        "title",
         "description",
         "icon"
     )
+
+
 
 @admin.register(Appointment)
 
@@ -99,14 +98,6 @@ class Services(admin.ModelAdmin):
         "icon"
     )
 
-@admin.register(Services_banner)
-
-class Services_banner(admin.ModelAdmin):
-    list_display = (
-        "title",
-        "description",
-        "icon"
-    )
 
 @admin.register(SiteInfo)
 

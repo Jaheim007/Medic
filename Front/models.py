@@ -14,7 +14,13 @@ class About_Us(RepeatFields):
         verbose_name_plural = "About_Us" 
 
     title = models.CharField(max_length=150)
+    sub_title = models.CharField(max_length=150)
     description = models.TextField()
+    description_2 = models.TextField()
+    list_item_1 = models.CharField(max_length=150)
+    list_item_2 = models.CharField(max_length=150)
+    list_item_3 = models.CharField(max_length=150)
+    image = models.URLField()
     
     def __str__(self):
         return self.title
@@ -24,26 +30,14 @@ class About_Stats(RepeatFields):
     class Meta: 
         verbose_name = "About_Stats"
         verbose_name_plural = "About_Stats" 
-        
-    title = models.CharField(max_length=150)
-    number_stats = models.IntegerField()
+    
+    number_stats = models.IntegerField()   
+    description = models.TextField()
     icon = models.CharField(max_length=150)
 
     def __str__(self):
         return self.title
-    
-class About_provide(RepeatFields):
-    
-    class Meta: 
-        verbose_name = "About_provide"
-        verbose_name_plural = "About_provide" 
-        
-    title = models.CharField(max_length=150)
-    description = models.TextField()
-    icon = models.CharField(max_length=150)
-    
-    def __str__(self):
-        return self.title
+
     
 class Appointment(RepeatFields):
     
@@ -70,7 +64,7 @@ class Banner(RepeatFields):
      
     title = models.CharField(max_length=150)
     description = models.TextField()
-    image = models.ImageField(upload_to="Banner__Images")
+    image = models.URLField() 
     
     def __str__(self):
         return self.title
@@ -110,11 +104,11 @@ class Doctors(RepeatFields):
          
     name  = models.CharField(max_length=150)
     occupation = models.CharField(max_length=150) 
-    image = models.ImageField(upload_to="Doctor__Images")
-    facebook = models.URLField(max_length=200)
-    twitter = models.URLField(max_length=200)
-    instagram = models.URLField(max_length=200)
-    linkedin = models.URLField(max_length=200)
+    image = models.URLField()
+    facebook = models.URLField()
+    twitter = models.URLField()
+    instagram = models.URLField()
+    linkedin = models.URLField()
     
     def __str__(self):
         return self.name
@@ -143,19 +137,6 @@ class Services(RepeatFields):
     
     def __str__(self):
         return self.title
-
-class Services_banner(RepeatFields):
-       
-    class Meta: 
-        verbose_name = "Services_banner"
-        verbose_name_plural = "Services_banner" 
-       
-    title = models.CharField(max_length=150)
-    description = models.TextField()
-    icon = models.CharField(max_length=150)
-
-    def __str__(self):
-        return self.title
     
 class SiteInfo(RepeatFields):
     
@@ -179,10 +160,10 @@ class SiteInfo(RepeatFields):
     phone_1 = models.CharField(max_length=150)                                                    
     phone_2 = models.CharField(max_length=150)                                                    
     
-    facebook = models.URLField(max_length=200)
-    twitter = models.URLField(max_length=200)
-    instagram = models.URLField(max_length=200)
-    linkedin = models.URLField(max_length=200)
+    facebook = models.URLField()
+    twitter = models.URLField()
+    instagram = models.URLField()
+    linkedin = models.URLField()
     
     def __str__(self):
         return self.about_title

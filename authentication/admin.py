@@ -12,5 +12,7 @@ class User(admin.ModelAdmin):
         "phone",
         "date_of_birth",
         "gender",
-        "photo"
+        "image",
+        "occupation",
+        "created"
     )

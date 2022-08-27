@@ -16,7 +16,6 @@
         </div>
   
          <div>
-           {% comment %} <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe> {% endcomment %} 
           <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.1039909234396!2d-3.959723084708605!3d5.401125196082619!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfc1933d4b2186d5%3A0xf64a1036251b83a4!2sCHU%20d&#39;Angr%C3%A9!5e0!3m2!1sen!2sci!4v1661423838770!5m2!1sen!2sci"  frameborder="0" allowfullscreen></iframe>
 
         </div>
@@ -54,25 +53,21 @@
             </div>
   
             <div class="col-lg-6">
-              <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <form action="{% url 'contact' %}" method="POST" id="contact">
+                {% csrf_token %}
                 <div class="row">
-                  <div class="col form-group  mt-3">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                  <div class="col form-group mt-3">
+                    <input v-model="name" type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
                   </div>
                   <div class="col form-group mt-3">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                    <input v-model="email" type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
                   </div>
                 </div>
                 <div class="form-group mt-3">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                  <input v-model="subject" type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
                 </div>
                 <div class="form-group mt-3">
-                  <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-                </div>
-                <div class="my-3">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                  <textarea v-model="message" class="form-control" name="message" rows="7" placeholder="Message" required></textarea>
                 </div>
                 <div class="text-center"><button type="submit">Send Message</button></div>
               </form>
