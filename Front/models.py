@@ -1,4 +1,3 @@
-from multiprocessing.util import abstract_sockets_supported
 from django.db import models
 
 from phonenumber_field.modelfields import PhoneNumberField
