@@ -1,11 +1,11 @@
 from django.shortcuts import render , redirect
 from django.views.generic import View
-from django.contrib.auth import login, authenticate
-
+from django.contrib.auth import login, authenticate, logout
 
 from authentication import forms
 
 from authentication.models import User
+
 
 class Signup(View):  
     template_name = 'pages/signup.html'
@@ -61,6 +61,15 @@ class Login(View):
                 print("User not Found") 
     
         return render(request , self.template_name , locals())
+    
+class Logout(View):
+    
+    def get(self , request):
+        logout(request)
+        return redirect("/login")
+        
+    def post(self, request):
+        pass
         
         
 

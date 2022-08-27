@@ -104,15 +104,36 @@
       <!-- .navbar -->
 
       <a href="{% url 'appointment' %}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Make an</span> Appointment</a>
+
+      {% if user.is_authenticated %}
       <div style='margin-left: 20px ; ' class="dropdown">
+
+        
+        <button style='background-color:#3fbbc0; border: none ; font-size:15px ' class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Welcome {{user.first_name}}
+        </button>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="{% url 'user' %}">Account</a>
+          <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+        </div>
+      </div>
+     {% else %}
+      <div style='margin-left: 20px ; ' class="dropdown">
+
+        
         <button style='background-color:#3fbbc0; border: none ; font-size:15px ' class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           My Account
         </button>
+
+        
+      
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="{% url 'login' %}">Login</a>
           <a class="dropdown-item" href="{% url 'signup' %}">Sign Up</a>
         </div>
       </div>
+      {% endif %} 
     </div>
   </header><!-- End Header -->
 

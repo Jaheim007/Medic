@@ -97,6 +97,7 @@ class Departments(RepeatFields):
     
     name = models.CharField(max_length=150)
     description = models.TextField()
+    image = models.URLField()
 
     def __str__(self):
         return self.name
