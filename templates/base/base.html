@@ -118,7 +118,9 @@
           <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
         </div>
       </div>
+      
      {% else %}
+
       <div style='margin-left: 20px ; ' class="dropdown">
 
         
@@ -349,21 +351,20 @@
   })
 </script>
 
-
 <script>
   var app2 = new Vue({
-      el: "#appointment_choose",
+      el: "#appointment_form",
       data: {
           name: '',
           email:'', 
-          department:'',
-          doctor:'',
-          appointment_date:''
-          url:" {% url 'appointment_choose' %}"
+          department: '',
+          doctor : '',
+          appointment_date: '',
+          url:" {% url 'appointment_form' %}"
       },
       methods:{
           post_data(){
-              if(this.name === '' || this.email === '' || this.department === '' || this.doctor ===''|| this.appointment_date === ''){
+              if(this.name === '' || this.email === '' || this.department === '' || this.doctor ==='' || this.appointment_date ){
                   Swal.fire({
                       icon: 'error',
                       title: 'Error...',
@@ -378,6 +379,7 @@
                     })
               }
               else{
+                  console.log(this.appointment_date)
                 
                   axios.defaults.xsrfHeaderName = 'X-CSRFToken'
                   axios.defaults.xsrfCookieName = 'csrftoken'
@@ -396,11 +398,13 @@
                               text: response.data.msg,
 
                           })
+                          
                           this.name = ''
                           this.email = ''
-                          this.appointment_date = ''
                           this.department = ''
                           this.doctor = ''
+                          this.appointment_date = ''
+                 
                       }
                   })
 
@@ -411,6 +415,7 @@
       delimiters: ['%{', '}']
   })
 </script>
+
 
   
 

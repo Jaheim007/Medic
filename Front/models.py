@@ -48,7 +48,7 @@ class Appointment(RepeatFields):
     name = models.CharField(max_length=150)
     email = models.EmailField(max_length=254)
     department = models.CharField(max_length=150)
-    appointment_date = models.CharField(max_length=254)
+    appointment_date = models.CharField(max_length=254 , null=True , blank=True)
     doctor = models.CharField(max_length=150)
     
     def __str__(self):
@@ -80,7 +80,8 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.name
-   
+    
+    
 class Departments(RepeatFields):
     
     class Meta: 
@@ -91,8 +92,10 @@ class Departments(RepeatFields):
     description = models.TextField()
     image = models.URLField()
 
+
     def __str__(self):
         return self.name
+   
 
 class Doctors(RepeatFields):
     
@@ -101,15 +104,16 @@ class Doctors(RepeatFields):
         verbose_name_plural = "Doctors" 
          
     name  = models.CharField(max_length=150)
-    occupation = models.CharField(max_length=150) 
     image = models.URLField()
     facebook = models.URLField()
     twitter = models.URLField()
     instagram = models.URLField()
     linkedin = models.URLField()
+    department = models.ManyToManyField(Departments, related_name="doctor_department")
     
     def __str__(self):
         return self.name
+
     
 class Emergency_banner(RepeatFields):
     

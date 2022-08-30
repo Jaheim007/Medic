@@ -13,7 +13,8 @@
       <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
     </div>
 
-    <form method="POST" id="appointment_choose">
+
+    <form method="POST" id="appointment_form">
       {% csrf_token %}
       <div class="form-row">
 
@@ -27,21 +28,28 @@
         </div>
 
         
-
+        
         <div class="form-group col-md-8 mt-4">
+          
           <select id="inputState" v-model="department" name="department" class="form-control">
-            <option selected>Choose...</option>
-            <option>...</option>
+              {% for doctor in doctors %}
+              <option selected>{{doctor.name}}</option>
+              {% endfor %} 
           </select>
-        </div>
+      
 
         <div class="form-group col-md-8 mt-4">
           <select id="inputState" v-model="doctor" name="doctor" class="form-control">
-            <option selected>Choose...</option>
-            <option>...</option>
+            {% for doctor in doctors %}
+            <option selected>{{doctor.department}}</option>
+            {% endfor %} 
           </select>
+          
         </div>
-
+        
+      </div>
+      
+     
         <div class="form-group col-md-8 mt-4">
           <input type="text" v-model="appointment_date" name="appointment_date" class="form-control" id="pick-date" placeholder="Pick A Date">
         </div>
@@ -51,6 +59,7 @@
         </div>
         
     </form>
+  
   
   </div>
 </div>

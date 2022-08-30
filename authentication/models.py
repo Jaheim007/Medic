@@ -17,7 +17,7 @@ class User(AbstractUser , RepeatFields):
     phone = PhoneNumberField(region="CI")
     date_of_birth = models.DateField(blank=True , null=True)
     gender = models.CharField(max_length=150 , choices=Gender)
-    image = models.URLField()
+    image = models.URLField(default='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png')
     occupation = models.CharField(max_length=150)
     
 

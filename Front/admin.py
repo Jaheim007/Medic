@@ -80,7 +80,6 @@ class Departments(admin.ModelAdmin):
 class Doctors(admin.ModelAdmin):
     list_display = (
         "name",
-        "occupation",
         "image",
         "facebook",
         "twitter",

@@ -35,8 +35,8 @@ urlpatterns = [
     path('doctors', front.Doctors.as_view(), name="doctor"), 
     path("contact_verification", front.contact_verification , name="contact_verification"),
     path("newsletter_verification", front.newsletter_verification , name="newsletter_verification"),
-    path("appointment_choose", front.appointment_choose, name="appointment_choose"),
-    
+    path("appointment_form" , front.appointment_form , name = "appointment_form"),
+    path("update" , views.Update.as_view() , name="update")
 ]
 
 if settings.DEBUG:   

@@ -71,6 +71,17 @@ class Logout(View):
     def post(self, request):
         pass
         
+    
+class Update(View):   
+    template_name = 'pages/user_profile.html'
+    
+    def get(self , request):
+        form  = forms.UpdateProfile
+        return render(request , self.template_name , locals())
+    
+    def post(self, request):
+        pass
+    
         
 
 
