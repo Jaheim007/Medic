@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from django.views.generic import View
 from django.http import JsonResponse
 
@@ -45,6 +45,9 @@ class Contact(View):
         return render(request , self.template_name , locals())
     
     def post(self , request):
+        pass
+    
+def contact_verification(request):
         msg =''
         success = True
         if request.method == "POST":
@@ -69,6 +72,28 @@ class Contact(View):
         }
 
         return JsonResponse(data, safe=False)
+    
+def newsletter_verification(request):
+        msg =''
+        success = True
+        if request.method == "POST":
+            email = request.POST.get("email")
+
+        
+        newsletter = models.Newsletter(
+            email = email
+        )
+        
+        newsletter.save()
+        msg = 'Un message a été envoyé à votre adresse e-mail'
+    
+        data = {
+        'msg': msg,
+        'success': success
+        }
+
+        return JsonResponse(data, safe=False)
+    
     
 class Departments(View):
     template_name = 'pages/departments.html'
@@ -95,8 +120,36 @@ class Appointmnet(View):
     def get(self , request):
         return render(request , self.template_name , locals())
     
-    def post(self , request):
-        pass
+    
+def appointment_choose(request):
+        msg =''
+        success = True
+        if request.method == "POST":
+            name = request.POST.get("name")
+            email = request.POST.get("email")
+            department = request.POST.get("department")
+            doctor = request.POST.get("doctor")
+            appointment_date = request.POST.get("appointment_date")
+        
+        appointment = models.Appointment(
+            name = name,
+            email = email,
+            department = department, 
+            doctor = doctor, 
+            appointment_date = appointment_date,  
+        )
+        
+        appointment.save()
+        
+        msg = 'Un message a été envoyé à votre adresse e-mail'
+
+        data = {
+            'msg': msg,
+            'success': success
+        }
+        
+        return JsonResponse(data, safe=False)
+    
 
 class User_profile(View):
     template_name = 'pages/user_profile.html'

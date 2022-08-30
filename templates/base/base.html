@@ -191,8 +191,10 @@
           <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Our Newsletter</h4>
             <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
+            <form id="newsletter" method="POST">
+              {% csrf_token %}
+              <input type="email" v-model="email" name="email">
+              <input @click.prevent="post_data" type="submit" value="Subscribe">
             </form>
 
           </div>
@@ -204,13 +206,6 @@
     <div class="container">
       <div class="copyright">
         &copy;Copyright <strong><span>Medicio</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medicio-free-bootstrap-theme/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
   </footer>
@@ -251,11 +246,11 @@
             email:'', 
             subject:'',
             message:'',
-            url:" {% url 'contact' %}"
+            url:" {% url 'contact_verification' %}"
         },
         methods:{
             post_data(){
-                if(this.name === '' || this.email === '' || this.website === '' || this.message ===''){
+                if(this.name === '' || this.email === '' || this.subject === '' || this.message ===''){
                     Swal.fire({
                         icon: 'error',
                         title: 'Error...',
@@ -277,7 +272,7 @@
                     let form = new FormData()
                     form.append('name', this.name)
                     form.append('email', this.email)
-                    form.append('website', this.website)
+                    form.append('subject', this.subject)
                     form.append('message', this.message)
                     axios.post(this.url, form).then((response)=>{
                         if(response.data.success){
@@ -300,6 +295,121 @@
         },
         delimiters: ['%{', '}']
     })
+</script>
+
+<script>
+  var app2 = new Vue({
+      el: "#newsletter",
+      data: {
+          email:'', 
+          url:" {% url 'newsletter_verification' %}"
+      },
+      methods:{
+          post_data(){
+              if(this.email === '' ){
+                  Swal.fire({
+                      icon: 'error',
+                      title: 'Error...',
+                      text: 'Veuillez remplir tous les champs',
+                    })
+              }
+              else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email)){
+                  Swal.fire({
+                      icon: 'error',
+                      title: 'Email Error',
+                      text: 'Veuillez saisir votre adresse e-mail dans ce format votre@exemple.com',
+                    })
+              }
+              else{
+                
+                  axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+                  axios.defaults.xsrfCookieName = 'csrftoken'
+
+                  let form = new FormData()
+                  form.append('email', this.email)
+                  axios.post(this.url, form).then((response)=>{
+                      if(response.data.success){
+                          Swal.fire({
+                              icon: 'success',
+                              title: 'Success',
+                              text: response.data.msg,
+
+                          })
+
+                          this.email = ''
+                 
+                      }
+                  })
+
+              }
+             
+          }
+      },
+      delimiters: ['%{', '}']
+  })
+</script>
+
+
+<script>
+  var app2 = new Vue({
+      el: "#appointment_choose",
+      data: {
+          name: '',
+          email:'', 
+          department:'',
+          doctor:'',
+          appointment_date:''
+          url:" {% url 'appointment_choose' %}"
+      },
+      methods:{
+          post_data(){
+              if(this.name === '' || this.email === '' || this.department === '' || this.doctor ===''|| this.appointment_date === ''){
+                  Swal.fire({
+                      icon: 'error',
+                      title: 'Error...',
+                      text: 'Veuillez remplir tous les champs',
+                    })
+              }
+              else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email)){
+                  Swal.fire({
+                      icon: 'error',
+                      title: 'Email Error',
+                      text: 'Veuillez saisir votre adresse e-mail dans ce format votre@exemple.com',
+                    })
+              }
+              else{
+                
+                  axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+                  axios.defaults.xsrfCookieName = 'csrftoken'
+
+                  let form = new FormData()
+                  form.append('name', this.name)
+                  form.append('email', this.email)
+                  form.append('department', this.department)
+                  form.append('doctor', this.doctor)
+                  form.append('appointment_date', this.appointment_date)
+                  axios.post(this.url, form).then((response)=>{
+                      if(response.data.success){
+                          Swal.fire({
+                              icon: 'success',
+                              title: 'Success',
+                              text: response.data.msg,
+
+                          })
+                          this.name = ''
+                          this.email = ''
+                          this.appointment_date = ''
+                          this.department = ''
+                          this.doctor = ''
+                      }
+                  })
+
+              }
+             
+          }
+      },
+      delimiters: ['%{', '}']
+  })
 </script>
 
   

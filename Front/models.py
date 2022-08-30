@@ -47,11 +47,9 @@ class Appointment(RepeatFields):
         
     name = models.CharField(max_length=150)
     email = models.EmailField(max_length=254)
-    phone = PhoneNumberField()
     department = models.CharField(max_length=150)
-    appointment_date = models.DateField()
+    appointment_date = models.CharField(max_length=254)
     doctor = models.CharField(max_length=150)
-    message = models.TextField()
     
     def __str__(self):
         return self.name

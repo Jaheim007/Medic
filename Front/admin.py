@@ -34,11 +34,10 @@ class Appointment(admin.ModelAdmin):
     list_display = (
         "name",
         "email",
-        "phone",
         "department",
         "appointment_date",
         "doctor",
-        "message"
+  
     )
 
 @admin.register(Banner)
