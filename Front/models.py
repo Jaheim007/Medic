@@ -1,3 +1,4 @@
+
 from django.db import models
 
 from phonenumber_field.modelfields import PhoneNumberField
@@ -20,7 +21,7 @@ class About_Us(RepeatFields):
     list_item_1 = models.CharField(max_length=150)
     list_item_2 = models.CharField(max_length=150)
     list_item_3 = models.CharField(max_length=150)
-    image = models.URLField()
+    image = models.ImageField(upload_to = "About__Images")
     
     def __str__(self):
         return self.title
@@ -38,21 +39,7 @@ class About_Stats(RepeatFields):
     def __str__(self):
         return self.title
 
-    
-class Appointment(RepeatFields):
-    
-    class Meta: 
-        verbose_name = "Appointment"
-        verbose_name_plural = "Appointment" 
-        
-    name = models.CharField(max_length=150)
-    email = models.EmailField(max_length=254)
-    department = models.CharField(max_length=150)
-    appointment_date = models.CharField(max_length=254 , null=True , blank=True)
-    doctor = models.CharField(max_length=150)
-    
-    def __str__(self):
-        return self.name
+
     
 class Banner(RepeatFields):
     
@@ -62,7 +49,7 @@ class Banner(RepeatFields):
      
     title = models.CharField(max_length=150)
     description = models.TextField()
-    image = models.URLField() 
+    image = models.ImageField(upload_to='Banner__Images') 
     
     def __str__(self):
         return self.title
@@ -81,38 +68,6 @@ class Contact(models.Model):
     def __str__(self):
         return self.name
     
-    
-class Departments(RepeatFields):
-    
-    class Meta: 
-        verbose_name = "Department"
-        verbose_name_plural = "Departments"  
-    
-    name = models.CharField(max_length=150)
-    description = models.TextField()
-    image = models.URLField()
-
-
-    def __str__(self):
-        return self.name
-   
-
-class Doctors(RepeatFields):
-    
-    class Meta: 
-        verbose_name = "Doctor"
-        verbose_name_plural = "Doctors" 
-         
-    name  = models.CharField(max_length=150)
-    image = models.URLField()
-    facebook = models.URLField()
-    twitter = models.URLField()
-    instagram = models.URLField()
-    linkedin = models.URLField()
-    department = models.ManyToManyField(Departments, related_name="doctor_department")
-    
-    def __str__(self):
-        return self.name
 
     
 class Emergency_banner(RepeatFields):
@@ -127,18 +82,7 @@ class Emergency_banner(RepeatFields):
     def __str__(self):
         return self.title
 
-class Services(RepeatFields):
-    
-    class Meta: 
-        verbose_name = "Services"
-        verbose_name_plural = "Services" 
 
-    title = models.CharField(max_length=150)
-    description = models.TextField()
-    icon = models.CharField(max_length=150)
-    
-    def __str__(self):
-        return self.title
     
 class SiteInfo(RepeatFields):
     
@@ -179,10 +123,12 @@ class Testimonials(RepeatFields):
     name = models.CharField(max_length=150)
     occupation = models.CharField(max_length=150)
     comment = models.TextField()
+    image = models.ImageField(upload_to="Testimonial__Images")
     
     def __str__(self):
         return self.name
-   
+
+
 class Newsletter(RepeatFields):
     
     class Meta: 

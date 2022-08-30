@@ -39,8 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Front',
-    'phonenumber_field',
+    "Hospital",
     'authentication',
+    'phonenumber_field',
     'widget_tweaks'
     
 ]
@@ -126,7 +127,10 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-    
+   
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/' 
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
@@ -137,3 +141,11 @@ AUTH_USER_MODEL = 'authentication.User'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "jaheimkouaho@gmail.com"
+EMAIL_HOST_PASSWORD= "xspzerdsfmsghhlf"
+EMAIL_USE_TLS = True
+

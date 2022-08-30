@@ -10,7 +10,7 @@
 <div class="container mt-4" >
     <div class="row justify-content-center">
     <div class="col-8">
-        <h2 class="mt-2">Sign Up</h2>
+        <h2 class="mt-2">Edit Profile</h2>
         <hr class="mt-4 mb-4">
             <form method="POST">
 
@@ -24,22 +24,15 @@
                 
                 {% render_field form.email class="mt-4 form-control" placeholder=form.email.label %}
              
-                {% render_field form.password1 class="mt-4 form-control" placeholder=form.password1.label %}
+                {% render_field form.password class="mt-4 form-control" placeholder=form.password.label %}
 
-                {% render_field form.password2 class="mt-4 form-control" placeholder=form.password2.label %}
-                
                 {% render_field form.gender class="mt-4 form-control" placeholder=form.gender.label %}
 
                 {% render_field form.phone class="mt-4 form-control" placeholder=form.phone.label %}
 
-                {% render_field form.date_of_birth class="mt-4 form-control" %}
-
                 {% render_field form.occupation class="mt-4 form-control" placeholder=form.occupation.label %}
 
                 {% render_field form.image class="mt-4 form-control" %}
-
-
-
 
                 <button type="submit" class="mt-4 btn btn-success">Update Profile</button>
                 

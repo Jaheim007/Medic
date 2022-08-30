@@ -14,7 +14,7 @@
 
         <!-- Slide 1 -->
         {% for banner in banners  %}
-        <div class="carousel-item active" style="background-image: url( {{banner.image}} )">
+        <div class="carousel-item active" style="background-image: url( {{banner.image.url}} )">
           <div class="container">
             <h2>{{banner.title}}</h2>
             <p>{{banner.description}}</p>

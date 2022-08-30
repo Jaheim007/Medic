@@ -10,7 +10,6 @@ class User(admin.ModelAdmin):
         "last_name", 
         "email", 
         "phone",
-        "date_of_birth",
         "gender",
         "image",
         "occupation",

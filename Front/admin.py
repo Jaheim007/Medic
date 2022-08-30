@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import About_Us , About_Stats ,  Appointment , Banner , Contact , Emergency_banner , Departments , Doctors , Services ,  SiteInfo , Testimonials , Newsletter
+from .models import About_Us , About_Stats ,  Banner , Contact , Emergency_banner ,  SiteInfo , Testimonials , Newsletter
 
 @admin.register(About_Us)
 
@@ -27,19 +27,6 @@ class About_Stats(admin.ModelAdmin):
     )
 
 
-
-@admin.register(Appointment)
-
-class Appointment(admin.ModelAdmin):
-    list_display = (
-        "name",
-        "email",
-        "department",
-        "appointment_date",
-        "doctor",
-  
-    )
-
 @admin.register(Banner)
 
 class Banner(admin.ModelAdmin):
@@ -65,35 +52,6 @@ class Emergency_banner(admin.ModelAdmin):
     list_display = (
         "title",
         "description"
-    )
-
-@admin.register(Departments)
-
-class Departments(admin.ModelAdmin):
-    list_display = (
-        "name",
-        "description"
-    )
-
-@admin.register(Doctors)
-
-class Doctors(admin.ModelAdmin):
-    list_display = (
-        "name",
-        "image",
-        "facebook",
-        "twitter",
-        "instagram",
-        "linkedin"
-    )
-
-@admin.register(Services)
-
-class Services(admin.ModelAdmin):
-    list_display = (
-        "title",
-        "description",
-        "icon"
     )
 
 

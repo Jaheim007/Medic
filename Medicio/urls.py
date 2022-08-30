@@ -19,24 +19,27 @@ from django.conf import settings
 from django.urls import path , include
 from authentication import views
 from Front import views as front
+from Hospital import views as host
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("signup" ,views.Signup.as_view() , name='signup'),
     path("login" , views.Login.as_view() , name='login'),
-    path("user" , front.User_profile.as_view(), name="user"),
+    path("user" , views.User_profile.as_view(), name="user"),
     path("logout" , views.Logout.as_view(), name="logout"), 
     path('', front.Home.as_view(), name="home"),
     path('about', front.About.as_view(), name="about"),
-    path('services', front.Services.as_view(), name="services"),
-    path('department', front.Departments.as_view(), name="department"),
-    path('appointment', front.Appointmnet.as_view(), name="appointment"),
     path('contact', front.Contact.as_view(), name="contact"),
-    path('doctors', front.Doctors.as_view(), name="doctor"), 
     path("contact_verification", front.contact_verification , name="contact_verification"),
     path("newsletter_verification", front.newsletter_verification , name="newsletter_verification"),
-    path("appointment_form" , front.appointment_form , name = "appointment_form"),
-    path("update" , views.Update.as_view() , name="update")
+    path("appointment_form" , host.appointment_form , name = "appointment_form"),
+    path('services', host.Services.as_view(), name="services"),
+    path('department', host.Departments.as_view(), name="department"),
+    path('appointment', host.Appointmnet.as_view(), name="appointment"),
+    path('doctors', host.Doctors.as_view(), name="doctor"), 
+    path('update' , views.UpdateProfile.as_view(), name='update')
+     
+
 ]
 
 if settings.DEBUG:   
