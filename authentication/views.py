@@ -7,6 +7,8 @@ from authentication import forms
 
 from authentication.models import User
 
+from Hospital import models
+
 
 class Signup(View):  
     template_name = 'pages/signup.html'
@@ -76,7 +78,7 @@ class Logout(View):
     
     def get(self , request):
         logout(request)
-        return redirect("/login")
+        return redirect("/")
         
     def post(self, request):
         pass
@@ -85,42 +87,11 @@ class User_profile(View):
     template_name = 'pages/user_profile.html'
     
     def get(self , request):
-        users = User.objects.filter()
+        users = User.objects.all()
         return render(request , self.template_name , locals())
     
     def post(self, request):
-        if request.method == "POST": 
-            first_name = request.POST.get("first_name")
-            last_name = request.POST.get("last_name")
-            username = request.POST.get("username")
-            email = request.POST.get("email")
-            password = request.POST.get("password")
-            image = request.POST.get("image")
-            phone = request.POST.get("phone")
-            occupation = request.POST.get("occupation")
-            gender = request.POST.get("gender")
-            
-            
-            user = User.objects.all(
-                first_name = first_name,
-                last_name = last_name,
-                username = username, 
-                email = email, 
-                password = password,
-                gender = gender, 
-                image = image , 
-                phone = phone, 
-                occupation = occupation
-                 
-            )
-            
-            user.save()
-            
-            login(request, user)
-            
-            return redirect("/login")
-        
-        return render(request , self.template_name , locals())  
+        pass
     
 class UpdateProfile(View):
     template_name =  'pages/edit.html' 
@@ -139,8 +110,40 @@ class UpdateProfile(View):
             form.save()
             return redirect("update")
         return redirect("update")
+    
+class Makeappointment(View):
+    template_name = "pages/appointments.html"
+    appoint_form = forms.Makeappointment
+    
+    def get(self , request): 
+        form = self.appoint_form
         
+        return render(request , self.template_name , locals()) 
+    
+    def post(self , request):
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        department = request.POST.get("department")
+        appointment_date = request.POST.get("appointment_date")
+        doctor = request.POST.get("doctor")
+  
             
+        appointment = models.Appointment(
+            name = name,
+            department = department,
+            doctor = doctor, 
+            email = email, 
+            appointment_date = appointment_date,  
+        )
+        
+        appointment.save()
+        
+        
+        return redirect("/")
+    
+    
+    
+        
         
          
     

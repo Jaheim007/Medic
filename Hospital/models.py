@@ -50,7 +50,7 @@ class Appointment(RepeatFields):
     name = models.CharField(max_length=150)
     email = models.EmailField(max_length=254)
     department = models.CharField(max_length=150)
-    appointment_date = models.CharField(max_length=254 , null=True , blank=True)
+    appointment_date = models.DateField()
     doctor = models.CharField(max_length=150)
     
     
