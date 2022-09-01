@@ -15,6 +15,7 @@
 <div class="container emp-profile">
     {% if user.is_authenticated %} 
             <form method="post">
+                {% csrf_token %}
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
@@ -38,7 +39,7 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <a href="{% url 'update' %}"> <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/> </a>
+                        <a href="{% url 'update' %}"> Edit Profile</a>
                     </div>
                 </div>
                 <div class="row">

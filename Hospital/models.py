@@ -16,6 +16,7 @@ class Departments(RepeatFields):
     name = models.CharField(max_length=150)
     description = models.TextField()
     image = models.ImageField( upload_to="Departments__Images")
+    doctor = models.ForeignKey("Doctors" ,  on_delete=models.SET_NULL , null=True, related_name="department_doctor")
 
 
     def __str__(self):
@@ -30,7 +31,7 @@ class Doctors(RepeatFields):
          
     name  = models.CharField(max_length=150)
     image = models.ImageField(upload_to="Doctors__Images")
-    department = models.ManyToManyField(Departments, related_name="doctor_department")
+    department = models.ForeignKey(Departments, on_delete=models.SET_NULL ,null=True ,related_name="doctor_department")
     facebook = models.URLField()
     twitter = models.URLField()
     instagram = models.URLField()

@@ -17,6 +17,7 @@ class Doctors(admin.ModelAdmin):
     list_display = (
         "name",
         "image",
+        "department",
         "facebook",
         "twitter",
         "instagram",

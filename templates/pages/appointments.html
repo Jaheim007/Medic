@@ -2,47 +2,67 @@
 
 {% load static %}
 
-{% load widget_tweaks %}
-
 {% block 'content' %}
 <br><br><br><br><br>
 
 <section id="appointment" class="appointment section-bg">
   <div class="container" data-aos="fade-up">
 
-    
-
-  <div class="container mt-4" >
-    <div class="row justify-content-center">
-    <div class="col-8">
-      <div class="section-title">
-        <h2>Make an Appointment</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-      </div>
-            <form method="POST">
-
-                {% csrf_token %}
-
-                {% render_field form.name class="mt-4 form-control" placeholder=form.name.label %}
-
-                {% render_field form.email class="mt-4 form-control" placeholder=form.email.label %}
-
-                {% render_field form.department class="mt-4 form-control" placeholder=form.department.label %}
-                
-                {% render_field form.doctor class="mt-4 form-control" placeholder=form.doctor.label %}
-             
-                {% render_field form.appointment_date class="mt-4 form-control" placeholder=form.appointment_date.label %}
-
-                <button type="submit" class="mt-4 btn btn-success">Make an Appointment</button>
-                
-                <br><br><br><br><br>
-            </form>
-        </div>
+    <div class="section-title">
+      <h2>Make an Appointment</h2>
+      <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
     </div>
-</div>    
 
 
-   
+    <form method="POST" id="appointment_form">
+      {% csrf_token %}
+      <div class="form-row">
+
+        <div class="form-group col-md-8 ml-10 mt-4 ">
+          <input type="text" v-model="name" name="name" class="form-control" placeholder="Your name">
+        </div>
+
+
+        <div class="form-group col-md-8 mt-4">
+          <input type="email" v-model="email" name="email" class="form-control" id="inputEmail4" placeholder="Your Email">
+        </div>
+
+        
+        
+        <div class="form-group col-md-8 mt-4">
+          
+          <select id="inputState" v-model="department" name="department" class="form-control">
+              {% for doctor in doctors %}
+              <option selected>{{doctor.department.name}}</option> 
+              {% endfor %} 
+          </select>
+      
+
+          <div class="form-group col-md-8 mt-4">
+          <select id="inputState" v-model="doctor" name="doctor" class="form-control">
+            {% for doctor in doctors %}
+            <option selected>{{doctor.related_name.name}}</option>
+            {% endfor %} 
+          </select>
+          
+        </div>
+       
+      </div>
+      
+     
+        <div class="form-group col-md-8 mt-4">
+          <input id="datepicker">
+        </div>
+
+        <div class="col-md-8">
+          <button type="submit" @click.prevent="post_data" class=" mt-4 mr-5 btn btn-success" style= "background: #65c9cd; border: none; ">Make An Appointment</button>
+        </div>
+        
+    </form>
+  
+  
+  </div>
+</div>
 </section>
 
 {% endblock 'content' %}

@@ -30,6 +30,10 @@ class Makeappointment(ModelForm):
     class Meta:
         model = models.Appointment
         fields = ["name" ,"email", "department", "appointment_date" , "doctor"]
+        
+class DateForm(forms.Form):
+    date = forms.DateField(input_formats=['%d/%m/%Y '])
+    
             
     
     

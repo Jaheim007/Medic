@@ -15,8 +15,12 @@
             <form method="POST">
 
                 {% csrf_token %}
+            
 
-                {% render_field form.first_name class="mt-4 form-control" placeholder=form.first_name.label %}
+                {% render_field form.image class="mt-4 form-control profile-img" %}
+
+
+                {% render_field form.first_name class="mt-4 form-control " placeholder=form.first_name.label %}
 
                 {% render_field form.last_name class="mt-4 form-control" placeholder=form.last_name.label %}
 
@@ -24,7 +28,6 @@
                 
                 {% render_field form.email class="mt-4 form-control" placeholder=form.email.label %}
              
-                {% render_field form.password class="mt-4 form-control" placeholder=form.password.label %}
 
                 {% render_field form.gender class="mt-4 form-control" placeholder=form.gender.label %}
 
@@ -32,7 +35,7 @@
 
                 {% render_field form.occupation class="mt-4 form-control" placeholder=form.occupation.label %}
 
-                {% render_field form.image class="mt-4 form-control" %}
+               
 
                 <button type="submit" class="mt-4 btn btn-success">Update Profile</button>
                 

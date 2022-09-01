@@ -114,10 +114,13 @@ class UpdateProfile(View):
 class Makeappointment(View):
     template_name = "pages/appointments.html"
     appoint_form = forms.Makeappointment
+    date_form = forms.DateForm
     
     def get(self , request): 
         form = self.appoint_form
-        
+        date = self.date_form
+        doctors = models.Doctors.objects.all()
+        departments = models.Departments.objects.all()
         return render(request , self.template_name , locals()) 
     
     def post(self , request):
