@@ -1,6 +1,7 @@
 from django.shortcuts import render , redirect
 from django.views.generic import View
 from django.http import JsonResponse
+from django.core.mail import send_mail
 
 from authentication.models import User
 
@@ -57,7 +58,15 @@ def contact_verification(request):
         )
         
         contact.save()
-        msg = 'Un message a été envoyé à votre adresse e-mail'
+        msg = 'Thank you for contacting Medicio.'
+        
+        send_mail(
+                "Bienvenue à Medicio",
+                "Thank you for contacting Medicio we will contact you via your phone in a few days. ",
+                'jaheimkouaho@gmail.com',
+                [email],
+                fail_silently=False
+        )
     
         data = {
         'msg': msg,
@@ -78,7 +87,15 @@ def newsletter_verification(request):
         )
         
         newsletter.save()
-        msg = 'Un message a été envoyé à votre adresse e-mail'
+        msg = 'Thank you for contacting Medicio'
+        
+        send_mail(
+                "Bienvenue à Medicio",
+                "Thank you for contacting Medicio we will contact you via your phone in a few days. ",
+                'jaheimkouaho@gmail.com',
+                [email],
+                fail_silently=False
+        )
     
         data = {
         'msg': msg,
