@@ -28,30 +28,22 @@
         </div>
 
         
-        
         <div class="form-group col-md-8 mt-4">
           
-          <select id="inputState" v-model="department" name="department" class="form-control">
+          <select id="inputState" v-model="doctor" name="doctor"   class="form-control">
               {% for doctor in doctors %}
-              <option selected>{{doctor.department.name}}</option> 
+                <option selected> {{doctor.name}}--{{doctor.department}} </option> 
               {% endfor %} 
           </select>
       
 
-          <div class="form-group col-md-8 mt-4">
-          <select id="inputState" v-model="doctor" name="doctor" class="form-control">
-            {% for doctor in doctors %}
-            <option selected>{{doctor.related_name.name}}</option>
-            {% endfor %} 
-          </select>
-          
         </div>
        
       </div>
       
      
-        <div class="form-group col-md-8 mt-4">
-          <input id="datepicker">
+        <div class="form-group col-md-8 mt-4" >
+          <input v-model="appointment_date" id="datepicker">
         </div>
 
         <div class="col-md-8">

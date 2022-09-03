@@ -94,7 +94,6 @@
           <li><a class="nav-link scrollto " href="{% url 'home' %}">Home</a></li>
           <li><a class="nav-link scrollto" href="{% url 'about' %}">About</a></li>
           <li><a class="nav-link scrollto" href="{% url 'services' %}">Services</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'department' %}">Departments</a></li>
           <li><a class="nav-link scrollto" href="{% url 'doctor' %}">Doctors</a></li>
           <li><a class="nav-link scrollto" href="{% url 'contact' %}">Contact</a></li>
           
@@ -352,21 +351,20 @@
       delimiters: ['%{', '}']
   })
 </script>
-{% comment %} 
+
 <script>
   var app2 = new Vue({
       el: "#appointment_form",
       data: {
           name: '',
           email:'', 
-          department: '',
           doctor : '',
           appointment_date: '',
           url:" {% url 'appointment_form' %}"
       },
       methods:{
           post_data(){
-              if(this.name === '' || this.email === '' || this.department === '' || this.doctor ==='' || this.appointment_date ){
+              if(this.name === '' || this.email === '' || this.doctor ==='' || this.appointment_date ){
                   Swal.fire({
                       icon: 'error',
                       title: 'Error...',
@@ -389,7 +387,6 @@
                   let form = new FormData()
                   form.append('name', this.name)
                   form.append('email', this.email)
-                  form.append('department', this.department)
                   form.append('doctor', this.doctor)
                   form.append('appointment_date', this.appointment_date)
                   axios.post(this.url, form).then((response)=>{
@@ -403,7 +400,6 @@
                           
                           this.name = ''
                           this.email = ''
-                          this.department = ''
                           this.doctor = ''
                           this.appointment_date = ''
                  
@@ -416,7 +412,7 @@
       },
       delimiters: ['%{', '}']
   })
-</script> {% endcomment %}
+</script>
 
 <script>
   $(function () {

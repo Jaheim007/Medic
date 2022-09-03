@@ -2,6 +2,7 @@ from django.shortcuts import render
 from Hospital import models
 from django.views.generic import View
 from django.http import JsonResponse
+from django.core.mail import send_mail
    
 class Departments(View):
     template_name = 'pages/departments.html'
@@ -23,42 +24,40 @@ class Doctors(View):
     def post(self , request):
         pass
     
-# class Appointmnet(View):
-#     template_name = 'pages/appointments.html'
-    
-#     def get(self , request):
-#         doctors = models.Doctors.objects.all()
-#         return render(request , self.template_name , locals())
-    
-#     def post(self , request): 
-#         msg =''
-#         success = True
-#         if request.method == "POST":
-#             name = request.POST.get("name")
-#             email = request.POST.get("email")
-#             department = request.POST.get("department")
-#             doctor = request.POST.get("doctor")
-#             appointment_date = request.POST.get("appointment_date")
-        
-#         appointment = models.Appointment(
-#             name = name,
-#             email = email,
-#             department = department, 
-#             doctor = doctor, 
-#             appointment_date = appointment_date,  
-#         )
-        
-#         appointment.save()
-        
-#         msg = 'Un message a été envoyé à votre adresse e-mail'
 
-#         data = {
-#             'msg': msg,
-#             'success': success
-#         }
+    
+def appointment_form(request): 
+       msg =''
+       success = True
+       if request.method == "POST":
+           name = request.POST.get("name")
+           email = request.POST.get("email")
+           doctor = request.POST.get("doctor")
+           appointment_date = request.POST.get("appointment_date")
         
+       appointment = models.Appointment(
+           name = name,
+           email = email,
+           doctor = doctor, 
+           appointment_date = appointment_date,  
+       )
         
-#         return JsonResponse(data, safe=False)   
+       appointment.save()
+       msg = 'You have successfully made an appointment , a message has been sent to your email.'
+
+       send_mail(
+                "Your Appoinment Request",
+                "You have successfully made an appointment, we will contact you via your phone in a few days. ",
+                'jaheimkouaho@gmail.com',
+                [email],
+                fail_silently=False
+        )
+       data = {
+        'msg': msg,
+        'success': success
+        }
+        
+       return JsonResponse(data, safe=False) 
     
 
 

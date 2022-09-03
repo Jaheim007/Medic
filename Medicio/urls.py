@@ -18,6 +18,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.urls import path , include
 
+
 from authentication import views
 from Front import views as front
 from Hospital import views as host
@@ -37,7 +38,8 @@ urlpatterns = [
     path('department', host.Departments.as_view(), name="department"),
     path('doctors', host.Doctors.as_view(), name="doctor"), 
     path('update' , views.UpdateProfile.as_view(), name='update'),
-    path('appointment' , views.Makeappointment.as_view() , name="appointment")
+    path('appointment' , views.Makeappointment.as_view() , name="appointment"),
+    path("appointment_form" , host.appointment_form , name ="appointment_form")
     
      
 

@@ -5,24 +5,8 @@ from phonenumber_field.modelfields import PhoneNumberField
 class RepeatFields(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    deleted = models.BooleanField(default=False)
 
-class Departments(RepeatFields):
-    
-    class Meta: 
-        verbose_name = "Department"
-        verbose_name_plural = "Departments"  
-    
-    name = models.CharField(max_length=150)
-    description = models.TextField()
-    image = models.ImageField( upload_to="Departments__Images")
-    doctor = models.ForeignKey("Doctors" ,  on_delete=models.SET_NULL , null=True, related_name="department_doctor")
-
-
-    def __str__(self):
-        return self.name
    
-
 class Doctors(RepeatFields):
     
     class Meta: 
@@ -31,7 +15,7 @@ class Doctors(RepeatFields):
          
     name  = models.CharField(max_length=150)
     image = models.ImageField(upload_to="Doctors__Images")
-    department = models.ForeignKey(Departments, on_delete=models.SET_NULL ,null=True ,related_name="doctor_department")
+    department = models.CharField(max_length=150)
     facebook = models.URLField()
     twitter = models.URLField()
     instagram = models.URLField()
@@ -51,7 +35,7 @@ class Appointment(RepeatFields):
     name = models.CharField(max_length=150)
     email = models.EmailField(max_length=254)
     department = models.CharField(max_length=150)
-    appointment_date = models.DateField()
+    appointment_date = models.CharField(max_length=150)
     doctor = models.CharField(max_length=150)
     
     

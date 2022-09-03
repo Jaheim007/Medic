@@ -3,13 +3,7 @@ from django.contrib import admin
 from Hospital import models
 
 
-@admin.register(models.Departments)
 
-class Departments(admin.ModelAdmin):
-    list_display = (
-        "name",
-        "description"
-    )
 
 @admin.register(models.Doctors)
 

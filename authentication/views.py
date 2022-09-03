@@ -120,30 +120,8 @@ class Makeappointment(View):
         form = self.appoint_form
         date = self.date_form
         doctors = models.Doctors.objects.all()
-        departments = models.Departments.objects.all()
         return render(request , self.template_name , locals()) 
-    
-    def post(self , request):
-        name = request.POST.get("name")
-        email = request.POST.get("email")
-        department = request.POST.get("department")
-        appointment_date = request.POST.get("appointment_date")
-        doctor = request.POST.get("doctor")
-  
-            
-        appointment = models.Appointment(
-            name = name,
-            department = department,
-            doctor = doctor, 
-            email = email, 
-            appointment_date = appointment_date,  
-        )
-        
-        appointment.save()
-        
-        
-        return redirect("/")
-    
+
     
     
         

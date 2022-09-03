@@ -104,6 +104,8 @@ def newsletter_verification(request):
 
         return JsonResponse(data, safe=False)
     
+
+    
  
         
     
